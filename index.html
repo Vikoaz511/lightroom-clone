@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A browser-based photo editor with presets, HSL, tone curves, color grading, and more." />
     <title>Mini Lightroom (Basic Editor)</title>
     <link
       rel="icon"
@@ -35,6 +36,7 @@
         <select id="exportFormat" class="select" disabled>
           <option value="image/png">PNG</option>
           <option value="image/jpeg">JPEG</option>
+          <option value="image/webp">WebP</option>
         </select>
         <select id="exportQuality" class="select" disabled title="Export resolution">
           <option value="preview">Preview size</option>
@@ -57,11 +59,11 @@
             </div>
             <button id="exportPresetBtn" class="btn btn--ghost" type="button" disabled>Export</button>
           </div>
-          <div class="hint" style="margin-top: 8px">Presets are just saved slider values (like Lightroom basics).</div>
+          <div class="hint" style="margin-top: 8px">Presets are just saved slider values</div>
         </div>
 
         <div class="panel__section">
-          <div class="panel__title">Basic</div>
+          <div class="panel__title">Attributes</div>
           <div class="controls" id="basicControls"></div>
         </div>
 
@@ -107,7 +109,7 @@
 
         <div class="panel__footer">
           <div class="hint">
-            Tips: double‑click a slider to reset it. Hold <kbd>\</kbd> or “Compare” to preview original.
+            Tips: double‑click a slider to reset it. Hold <kbd>\</kbd> or "Compare" to preview original.
           </div>
           <div class="status" id="status">Open an image to start.</div>
         </div>

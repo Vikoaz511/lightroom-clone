@@ -244,6 +244,7 @@ const state = {
   outImageData: null, // ImageData
   // settings
   settings: {
+    // Basic
     exposure: 0, // EV * 10
     contrast: 0,
     highlights: 0,
@@ -254,13 +255,16 @@ const state = {
     tint: 0,
     vibrance: 0,
     saturation: 0,
+    // Effects
     texture: 0,
     clarity: 0,
     dehaze: 0,
+    // Detail
     sharpness: 0,
     sharpenMasking: 0,
     noiseReduction: 0,
     colorNoiseReduction: 0,
+    // Effects continued
     vignette: 0,
     grain: 0,
     // Crop (percent from edges)
@@ -310,196 +314,707 @@ const state = {
     hslMagentaHue: 0,
     hslMagentaSat: 0,
     hslMagentaLum: 0,
+    // Transform
     rotate: 0, // degrees
     flipH: 0,
     flipV: 0,
   },
 };
 
+// =============================================================================
+// PRESETS — all attribute groups researched and applied per look:
+//   Basic · Effects · Detail · Tone Curve · Color Grading · HSL · Lens
+// =============================================================================
 const PRESETS = [
   {
     id: "none",
-    name: "None (no changes)",
+    name: "None",
     settings: {},
   },
+
+  // ---------------------------------------------------------------------------
+  // LANDSCAPE
+  // Goal: punchy outdoor scene — boosted sky blues & greens, recovered
+  // highlights, lifted shadows, subtle warm sun-grade in mids/highs,
+  // cooled temp for crisp atmosphere, strong sharpness + dehaze.
+  // ---------------------------------------------------------------------------
   {
     id: "landscape",
     name: "Landscape",
     settings: {
+      // Basic
       exposure: 2,
       contrast: 18,
-      highlights: -18,
-      shadows: 14,
-      whites: 10,
-      blacks: -12,
-      temperature: -6,
-      tint: 0,
-      vibrance: 30,
+      highlights: -22,
+      shadows: 16,
+      whites: 12,
+      blacks: -14,
+      temperature: -8,
+      tint: 2,
+      vibrance: 32,
       saturation: 8,
-      texture: 22,
-      clarity: 14,
-      dehaze: 16,
-      sharpness: 26,
-      vignette: -10,
+      // Effects
+      texture: 24,
+      clarity: 16,
+      dehaze: 18,
+      vignette: -12,
+      grain: 0,
+      // Detail
+      sharpness: 30,
+      sharpenMasking: 20,
+      noiseReduction: 8,
+      colorNoiseReduction: 12,
+      // Tone curve — lift shadows slightly, pull highlights down
+      curveShadows: 8,
+      curveDarks: 4,
+      curveLights: -6,
+      curveHighlights: -14,
+      // Color grading — cool blue shadows, warm golden highlights
+      gradeShadowsHue: 210,
+      gradeShadowsSat: 18,
+      gradeMidHue: 40,
+      gradeMidSat: 6,
+      gradeHighHue: 46,
+      gradeHighSat: 14,
+      gradeBalance: -10,
+      // HSL — richer sky blues, vivid greens, punchy yellows
+      hslRedHue: 0,
+      hslRedSat: 6,
+      hslRedLum: 0,
+      hslOrangeHue: 4,
+      hslOrangeSat: 10,
+      hslOrangeLum: 2,
+      hslYellowHue: -4,
+      hslYellowSat: 18,
+      hslYellowLum: 4,
+      hslGreenHue: 6,
+      hslGreenSat: 22,
+      hslGreenLum: -4,
+      hslAquaHue: -8,
+      hslAquaSat: 16,
+      hslAquaLum: 4,
+      hslBlueHue: 4,
+      hslBlueSat: 28,
+      hslBlueLum: -8,
+      hslPurpleHue: 0,
+      hslPurpleSat: 0,
+      hslPurpleLum: 0,
+      hslMagentaHue: 0,
+      hslMagentaSat: 0,
+      hslMagentaLum: 0,
+      // Lens — slight barrel correction for wide-angle shots
+      lensDistortion: 4,
+      lensChromaticAberration: 8,
+      lensVignette: -6,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // WARM
+  // Goal: golden-hour feel — warm temp, lifted skin tones, soft glow,
+  // amber color grade throughout, boosted oranges/yellows in HSL.
+  // ---------------------------------------------------------------------------
   {
     id: "warm",
     name: "Warm",
     settings: {
+      // Basic
       exposure: 3,
-      contrast: 6,
-      highlights: -12,
-      shadows: 10,
-      whites: 6,
+      contrast: 8,
+      highlights: -14,
+      shadows: 12,
+      whites: 8,
       blacks: -8,
-      temperature: 34,
+      temperature: 36,
       tint: 8,
-      vibrance: 18,
+      vibrance: 20,
       saturation: 6,
+      // Effects
       texture: 10,
       clarity: 4,
       dehaze: 6,
-      sharpness: 16,
-      vignette: -8,
+      vignette: -10,
+      grain: 6,
+      // Detail
+      sharpness: 18,
+      sharpenMasking: 30,
+      noiseReduction: 6,
+      colorNoiseReduction: 8,
+      // Tone curve — gentle S-curve with lifted warm shadows
+      curveShadows: 10,
+      curveDarks: 6,
+      curveLights: 4,
+      curveHighlights: -8,
+      // Color grading — warm amber through all tones
+      gradeShadowsHue: 30,
+      gradeShadowsSat: 14,
+      gradeMidHue: 36,
+      gradeMidSat: 18,
+      gradeHighHue: 44,
+      gradeHighSat: 20,
+      gradeBalance: 10,
+      // HSL — punch up oranges & yellows (skin/golden light), mute blues
+      hslRedHue: 6,
+      hslRedSat: 12,
+      hslRedLum: 4,
+      hslOrangeHue: 8,
+      hslOrangeSat: 22,
+      hslOrangeLum: 6,
+      hslYellowHue: 6,
+      hslYellowSat: 20,
+      hslYellowLum: 8,
+      hslGreenHue: 0,
+      hslGreenSat: -6,
+      hslGreenLum: -2,
+      hslAquaHue: 0,
+      hslAquaSat: -10,
+      hslAquaLum: -4,
+      hslBlueHue: 0,
+      hslBlueSat: -14,
+      hslBlueLum: -6,
+      hslPurpleHue: 0,
+      hslPurpleSat: -6,
+      hslPurpleLum: 0,
+      hslMagentaHue: 6,
+      hslMagentaSat: 8,
+      hslMagentaLum: 2,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 4,
+      lensVignette: -8,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // CINEMATIC
+  // Goal: Hollywood film look — crushed blacks, desaturated mids,
+  // deep contrast, slight teal-orange split grade, filmic S-curve.
+  // ---------------------------------------------------------------------------
   {
     id: "cinematic",
     name: "Cinematic",
     settings: {
-      exposure: 1,
-      contrast: 22,
-      highlights: -30,
-      shadows: 8,
-      whites: 6,
-      blacks: -22,
+      // Basic
+      exposure: 2,
+      contrast: 24,
+      highlights: -32,
+      shadows: 6,
+      whites: 8,
+      blacks: -24,
       temperature: -10,
       tint: -2,
-      vibrance: 10,
-      saturation: -10,
+      vibrance: 8,
+      saturation: -12,
+      // Effects
       texture: 14,
-      clarity: 12,
-      dehaze: 22,
-      sharpness: 18,
-      vignette: -26,
+      clarity: 14,
+      dehaze: 20,
+      vignette: -28,
+      grain: 12,
+      // Detail
+      sharpness: 20,
+      sharpenMasking: 40,
+      noiseReduction: 10,
+      colorNoiseReduction: 14,
+      // Tone curve — deep cinematic S-curve, crushed blacks
+      curveShadows: -16,
+      curveDarks: -6,
+      curveLights: 6,
+      curveHighlights: -18,
+      // Color grading — teal shadows, orange/amber highlights (classic split)
+      gradeShadowsHue: 188,
+      gradeShadowsSat: 28,
+      gradeMidHue: 30,
+      gradeMidSat: 8,
+      gradeHighHue: 36,
+      gradeHighSat: 22,
+      gradeBalance: -20,
+      // HSL — desaturate reds/magentas, keep skin tones, boost teals
+      hslRedHue: -4,
+      hslRedSat: -8,
+      hslRedLum: -4,
+      hslOrangeHue: 4,
+      hslOrangeSat: 10,
+      hslOrangeLum: -2,
+      hslYellowHue: 0,
+      hslYellowSat: -8,
+      hslYellowLum: -4,
+      hslGreenHue: 0,
+      hslGreenSat: -12,
+      hslGreenLum: -6,
+      hslAquaHue: -6,
+      hslAquaSat: 16,
+      hslAquaLum: -4,
+      hslBlueHue: 4,
+      hslBlueSat: 14,
+      hslBlueLum: -8,
+      hslPurpleHue: 0,
+      hslPurpleSat: -10,
+      hslPurpleLum: -4,
+      hslMagentaHue: 0,
+      hslMagentaSat: -12,
+      hslMagentaLum: -6,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 6,
+      lensVignette: -12,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // RAIN
+  // Goal: moody overcast wet street — desaturated, cold blue-grey,
+  // heavy grain for atmosphere, lifted shadows, crushed whites, dehaze.
+  // ---------------------------------------------------------------------------
   {
     id: "rain",
     name: "Rain",
     settings: {
+      // Basic
       exposure: -2,
-      contrast: 10,
-      highlights: -22,
-      shadows: 18,
-      whites: -6,
-      blacks: 6,
-      temperature: -26,
-      tint: -6,
-      vibrance: -6,
-      saturation: -18,
+      contrast: 12,
+      highlights: -24,
+      shadows: 20,
+      whites: -10,
+      blacks: 4,
+      temperature: -28,
+      tint: -8,
+      vibrance: -10,
+      saturation: -22,
+      // Effects
       texture: 18,
-      clarity: 16,
-      dehaze: 14,
-      sharpness: 14,
-      vignette: -18,
-      grain: 18,
+      clarity: 18,
+      dehaze: 16,
+      vignette: -20,
+      grain: 28,
+      // Detail
+      sharpness: 16,
+      sharpenMasking: 20,
+      noiseReduction: 14,
+      colorNoiseReduction: 18,
+      // Tone curve — flat muted contrast, lifted blacks for matte
+      curveShadows: 14,
+      curveDarks: 6,
+      curveLights: -8,
+      curveHighlights: -16,
+      // Color grading — cold blue/grey through all tones
+      gradeShadowsHue: 214,
+      gradeShadowsSat: 22,
+      gradeMidHue: 210,
+      gradeMidSat: 12,
+      gradeHighHue: 205,
+      gradeHighSat: 8,
+      gradeBalance: -5,
+      // HSL — strip warmth, boost blues/aquas, mute oranges
+      hslRedHue: 0,
+      hslRedSat: -14,
+      hslRedLum: -6,
+      hslOrangeHue: 0,
+      hslOrangeSat: -22,
+      hslOrangeLum: -8,
+      hslYellowHue: 0,
+      hslYellowSat: -20,
+      hslYellowLum: -4,
+      hslGreenHue: -4,
+      hslGreenSat: -10,
+      hslGreenLum: -4,
+      hslAquaHue: -4,
+      hslAquaSat: 14,
+      hslAquaLum: 6,
+      hslBlueHue: 2,
+      hslBlueSat: 20,
+      hslBlueLum: 4,
+      hslPurpleHue: 0,
+      hslPurpleSat: -6,
+      hslPurpleLum: 0,
+      hslMagentaHue: 0,
+      hslMagentaSat: -10,
+      hslMagentaLum: -4,
+      // Lens — slight distortion (wet glass / wide lens look)
+      lensDistortion: -4,
+      lensChromaticAberration: 10,
+      lensVignette: -10,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // CYBERPUNK
+  // Goal: neon-lit urban night — extreme vibrance, magenta/teal split,
+  // crushed blacks, glowing highlights, purple shadows, super punchy HSL.
+  // ---------------------------------------------------------------------------
   {
     id: "cyberpunk",
     name: "Cyberpunk",
     settings: {
+      // Basic
       exposure: 4,
-      contrast: 26,
-      highlights: -16,
-      shadows: 6,
-      whites: 14,
-      blacks: -26,
-      temperature: -20,
-      tint: 28,
-      vibrance: 42,
-      saturation: 16,
-      texture: 20,
-      clarity: 18,
-      dehaze: 28,
-      sharpness: 22,
-      vignette: -14,
+      contrast: 28,
+      highlights: -18,
+      shadows: 8,
+      whites: 16,
+      blacks: -28,
+      temperature: -22,
+      tint: 30,
+      vibrance: 46,
+      saturation: 18,
+      // Effects
+      texture: 22,
+      clarity: 20,
+      dehaze: 30,
+      vignette: -16,
+      grain: 14,
+      // Detail
+      sharpness: 26,
+      sharpenMasking: 14,
+      noiseReduction: 8,
+      colorNoiseReduction: 12,
+      // Tone curve — extreme contrast, glowing highlights
+      curveShadows: -20,
+      curveDarks: -8,
+      curveLights: 12,
+      curveHighlights: 10,
+      // Color grading — purple/violet shadows, cyan mids, magenta highlights
+      gradeShadowsHue: 272,
+      gradeShadowsSat: 36,
+      gradeMidHue: 186,
+      gradeMidSat: 20,
+      gradeHighHue: 312,
+      gradeHighSat: 30,
+      gradeBalance: 0,
+      // HSL — neon everything: cyan, magenta, purple at full blast
+      hslRedHue: -10,
+      hslRedSat: 30,
+      hslRedLum: 6,
+      hslOrangeHue: -14,
+      hslOrangeSat: 16,
+      hslOrangeLum: -4,
+      hslYellowHue: -8,
+      hslYellowSat: 10,
+      hslYellowLum: -2,
+      hslGreenHue: 10,
+      hslGreenSat: 14,
+      hslGreenLum: -6,
+      hslAquaHue: -12,
+      hslAquaSat: 42,
+      hslAquaLum: 10,
+      hslBlueHue: 8,
+      hslBlueSat: 36,
+      hslBlueLum: -4,
+      hslPurpleHue: -8,
+      hslPurpleSat: 46,
+      hslPurpleLum: 8,
+      hslMagentaHue: -6,
+      hslMagentaSat: 48,
+      hslMagentaLum: 6,
+      // Lens — chromatic aberration for neon glow fringe effect
+      lensDistortion: 0,
+      lensChromaticAberration: 18,
+      lensVignette: -14,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // WARM PORTRAIT
+  // Goal: flattering skin — warm, soft, lifted shadows, reduced texture
+  // on skin via masking, gentle vignette to focus on face, peachy grade.
+  // ---------------------------------------------------------------------------
   {
     id: "warm-portrait",
     name: "Warm Portrait",
     settings: {
+      // Basic
       exposure: 4,
       contrast: 8,
-      highlights: -22,
-      shadows: 18,
-      whites: 8,
+      highlights: -24,
+      shadows: 20,
+      whites: 10,
       blacks: -10,
-      temperature: 28,
-      tint: 6,
-      vibrance: 22,
+      temperature: 30,
+      tint: 8,
+      vibrance: 24,
       saturation: 4,
+      // Effects
+      texture: -8,
       clarity: 6,
-      sharpness: 18,
-      vignette: -14,
+      dehaze: 4,
+      vignette: -16,
+      grain: 4,
+      // Detail — high masking to protect smooth skin, gentle sharpness
+      sharpness: 20,
+      sharpenMasking: 65,
+      noiseReduction: 12,
+      colorNoiseReduction: 16,
+      // Tone curve — gentle lift, soft highlights, open shadows
+      curveShadows: 14,
+      curveDarks: 8,
+      curveLights: 4,
+      curveHighlights: -10,
+      // Color grading — peachy/golden mids, warm highlights
+      gradeShadowsHue: 24,
+      gradeShadowsSat: 10,
+      gradeMidHue: 32,
+      gradeMidSat: 16,
+      gradeHighHue: 38,
+      gradeHighSat: 14,
+      gradeBalance: 15,
+      // HSL — flatter skin (orange/red boost in sat & lum), mute greens
+      hslRedHue: 4,
+      hslRedSat: 14,
+      hslRedLum: 8,
+      hslOrangeHue: 6,
+      hslOrangeSat: 18,
+      hslOrangeLum: 10,
+      hslYellowHue: 4,
+      hslYellowSat: 8,
+      hslYellowLum: 4,
+      hslGreenHue: 0,
+      hslGreenSat: -10,
+      hslGreenLum: -4,
+      hslAquaHue: 0,
+      hslAquaSat: -8,
+      hslAquaLum: -2,
+      hslBlueHue: 0,
+      hslBlueSat: -6,
+      hslBlueLum: -2,
+      hslPurpleHue: 0,
+      hslPurpleSat: -4,
+      hslPurpleLum: 0,
+      hslMagentaHue: 8,
+      hslMagentaSat: 10,
+      hslMagentaLum: 4,
+      // Lens — minimal correction for portrait glass
+      lensDistortion: 0,
+      lensChromaticAberration: 6,
+      lensVignette: -10,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // CINEMATIC TEAL
+  // Goal: classic teal-and-orange — strong teal in shadows/mids,
+  // warm amber skin tones, crushed blacks, desaturated overall, filmic grain.
+  // ---------------------------------------------------------------------------
   {
     id: "cinematic-teal",
     name: "Cinematic Teal",
     settings: {
+      // Basic
       exposure: 2,
-      contrast: 18,
-      highlights: -28,
-      shadows: 10,
-      whites: 8,
-      blacks: -18,
-      temperature: -14,
+      contrast: 20,
+      highlights: -30,
+      shadows: 8,
+      whites: 10,
+      blacks: -20,
+      temperature: -16,
       tint: -4,
-      vibrance: 16,
-      saturation: -6,
-      clarity: 10,
-      sharpness: 22,
-      vignette: -22,
+      vibrance: 14,
+      saturation: -8,
+      // Effects
+      texture: 12,
+      clarity: 12,
+      dehaze: 16,
+      vignette: -24,
+      grain: 16,
+      // Detail
+      sharpness: 24,
+      sharpenMasking: 35,
+      noiseReduction: 10,
+      colorNoiseReduction: 14,
+      // Tone curve — cinematic S-curve, strong shadow crush
+      curveShadows: -18,
+      curveDarks: -8,
+      curveLights: 8,
+      curveHighlights: -14,
+      // Color grading — deep teal shadows, neutral mids, warm amber highlights
+      gradeShadowsHue: 186,
+      gradeShadowsSat: 32,
+      gradeMidHue: 190,
+      gradeMidSat: 14,
+      gradeHighHue: 34,
+      gradeHighSat: 24,
+      gradeBalance: -15,
+      // HSL — push aqua/blue toward teal, warm up oranges for skin
+      hslRedHue: 0,
+      hslRedSat: -6,
+      hslRedLum: -2,
+      hslOrangeHue: 6,
+      hslOrangeSat: 14,
+      hslOrangeLum: 2,
+      hslYellowHue: 0,
+      hslYellowSat: -10,
+      hslYellowLum: -4,
+      hslGreenHue: -8,
+      hslGreenSat: -14,
+      hslGreenLum: -6,
+      hslAquaHue: -10,
+      hslAquaSat: 28,
+      hslAquaLum: -4,
+      hslBlueHue: 8,
+      hslBlueSat: 22,
+      hslBlueLum: -10,
+      hslPurpleHue: 0,
+      hslPurpleSat: -8,
+      hslPurpleLum: -4,
+      hslMagentaHue: 0,
+      hslMagentaSat: -10,
+      hslMagentaLum: -6,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 8,
+      lensVignette: -10,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // SOFT MATTE
+  // Goal: faded film / Instagram matte — lifted blacks, crushed whites,
+  // low contrast, gentle warmth, desaturated greens & blues, muted everything.
+  // ---------------------------------------------------------------------------
   {
     id: "matte",
     name: "Soft Matte",
     settings: {
+      // Basic
       exposure: 2,
-      contrast: -10,
-      highlights: -8,
-      shadows: 26,
-      whites: -12,
-      blacks: 20,
-      temperature: 8,
-      tint: 2,
-      vibrance: 12,
-      saturation: -6,
-      clarity: -10,
+      contrast: -12,
+      highlights: -10,
+      shadows: 28,
+      whites: -16,
+      blacks: 22,
+      temperature: 10,
+      tint: 4,
+      vibrance: 10,
+      saturation: -8,
+      // Effects
+      texture: -6,
+      clarity: -12,
+      dehaze: -4,
+      vignette: -12,
+      grain: 10,
+      // Detail — softer look, high masking
       sharpness: 10,
-      vignette: -10,
+      sharpenMasking: 50,
+      noiseReduction: 10,
+      colorNoiseReduction: 12,
+      // Tone curve — flat curve for matte: lifted blacks, pulled whites
+      curveShadows: 22,
+      curveDarks: 10,
+      curveLights: -8,
+      curveHighlights: -20,
+      // Color grading — warm dusty mids, pale highlight bloom
+      gradeShadowsHue: 28,
+      gradeShadowsSat: 10,
+      gradeMidHue: 34,
+      gradeMidSat: 12,
+      gradeHighHue: 40,
+      gradeHighSat: 8,
+      gradeBalance: 5,
+      // HSL — muted, faded: pull saturation across board, keep skin lightly warm
+      hslRedHue: 4,
+      hslRedSat: -6,
+      hslRedLum: 4,
+      hslOrangeHue: 4,
+      hslOrangeSat: -4,
+      hslOrangeLum: 6,
+      hslYellowHue: 0,
+      hslYellowSat: -10,
+      hslYellowLum: 4,
+      hslGreenHue: -4,
+      hslGreenSat: -18,
+      hslGreenLum: -4,
+      hslAquaHue: 0,
+      hslAquaSat: -16,
+      hslAquaLum: 2,
+      hslBlueHue: 0,
+      hslBlueSat: -20,
+      hslBlueLum: 4,
+      hslPurpleHue: 0,
+      hslPurpleSat: -12,
+      hslPurpleLum: 2,
+      hslMagentaHue: 0,
+      hslMagentaSat: -10,
+      hslMagentaLum: 2,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 0,
+      lensVignette: -6,
     },
   },
+
+  // ---------------------------------------------------------------------------
+  // B&W CRISP
+  // Goal: high-impact black and white — full desaturation, strong contrast,
+  // crisp sharpness, dramatic curve, slight cool silver tone in grading.
+  // ---------------------------------------------------------------------------
   {
     id: "bw-crisp",
     name: "B&W Crisp",
     settings: {
+      // Basic
       exposure: 3,
-      contrast: 28,
-      highlights: -12,
-      shadows: 12,
-      whites: 14,
-      blacks: -18,
+      contrast: 30,
+      highlights: -14,
+      shadows: 10,
+      whites: 16,
+      blacks: -20,
+      temperature: 0,
+      tint: 0,
       vibrance: -100,
       saturation: -100,
-      clarity: 18,
-      sharpness: 28,
-      vignette: -16,
+      // Effects
+      texture: 22,
+      clarity: 20,
+      dehaze: 8,
+      vignette: -18,
+      grain: 20,
+      // Detail — maximum sharpness with edge masking
+      sharpness: 32,
+      sharpenMasking: 45,
+      noiseReduction: 8,
+      colorNoiseReduction: 10,
+      // Tone curve — strong S-curve for deep blacks and bright whites
+      curveShadows: -14,
+      curveDarks: -8,
+      curveLights: 10,
+      curveHighlights: 8,
+      // Color grading — silver/cool tone (classic B&W paper feel)
+      gradeShadowsHue: 214,
+      gradeShadowsSat: 10,
+      gradeMidHue: 210,
+      gradeMidSat: 6,
+      gradeHighHue: 48,
+      gradeHighSat: 4,
+      gradeBalance: -8,
+      // HSL — luminosity mixing: boost reds/oranges (skin bright),
+      //        darken blues/greens (sky/foliage dark), classic B&W recipe
+      hslRedHue: 0,
+      hslRedSat: 0,
+      hslRedLum: 20,
+      hslOrangeHue: 0,
+      hslOrangeSat: 0,
+      hslOrangeLum: 16,
+      hslYellowHue: 0,
+      hslYellowSat: 0,
+      hslYellowLum: 10,
+      hslGreenHue: 0,
+      hslGreenSat: 0,
+      hslGreenLum: -14,
+      hslAquaHue: 0,
+      hslAquaSat: 0,
+      hslAquaLum: -10,
+      hslBlueHue: 0,
+      hslBlueSat: 0,
+      hslBlueLum: -22,
+      hslPurpleHue: 0,
+      hslPurpleSat: 0,
+      hslPurpleLum: -8,
+      hslMagentaHue: 0,
+      hslMagentaSat: 0,
+      hslMagentaLum: 6,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 0,
+      lensVignette: -8,
     },
   },
 ];
@@ -579,6 +1094,11 @@ const controls = [
   { group: "transform", key: "flipH", label: "Flip H", min: 0, max: 1, step: 1, fmt: (v) => (Number(v) ? "On" : "Off"), def: 0, toggle: true },
   { group: "transform", key: "flipV", label: "Flip V", min: 0, max: 1, step: 1, fmt: (v) => (Number(v) ? "On" : "Off"), def: 0, toggle: true },
 ];
+
+// Build a map of key → default value from the controls array.
+// This is the single source of truth for all slider defaults used by
+// export, import, and reset — so adding a new control is the only change needed.
+const SETTINGS_DEFAULTS = Object.fromEntries(controls.map((c) => [c.key, c.def]));
 
 function setStatus(text) {
   statusEl.textContent = text;
@@ -676,15 +1196,31 @@ function applyPresetById(id) {
   setStatus(`Preset applied: ${preset.name}.`);
 }
 
+// ---------------------------------------------------------------------------
+// EXPORT PRESET
+// Builds a complete settings snapshot: every known slider key is included,
+// with its current value (or its default if somehow absent).  This guarantees
+// the exported JSON is always a full, self-contained preset — no silent omissions.
+// ---------------------------------------------------------------------------
 async function exportCurrentPreset() {
   if (!state.loaded) return;
+
+  // Build full settings object: start from defaults, overlay current values.
+  // Keys that only exist in state.settings but NOT in SETTINGS_DEFAULTS
+  // (e.g. future runtime keys) are intentionally excluded from the preset.
+  const fullSettings = {};
+  for (const key of Object.keys(SETTINGS_DEFAULTS)) {
+    fullSettings[key] = key in state.settings ? state.settings[key] : SETTINGS_DEFAULTS[key];
+  }
+
   const payload = {
     type: "mini-lightroom-preset",
-    version: 1,
+    version: 2,
     exportedAt: new Date().toISOString(),
     name: `${state.imageName || "Preset"} (exported)`,
-    settings: { ...state.settings },
+    settings: fullSettings,
   };
+
   const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
@@ -694,22 +1230,32 @@ async function exportCurrentPreset() {
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
-  setStatus("Preset exported (JSON).");
+  setStatus("Preset exported (JSON) — all attributes included.");
 }
 
+// ---------------------------------------------------------------------------
+// NORMALIZE PRESET PAYLOAD
+// Accepts either format:
+//   v1/v2  { type, version, name, settings: { ... } }
+//   plain  { exposure: 0, contrast: 10, ... }
+//
+// Returns a settings object that is COMPLETE: every key in SETTINGS_DEFAULTS
+// is present.  Keys from the JSON that are not recognised slider keys are
+// silently ignored.  Missing keys are filled with their slider default so the
+// caller never has to handle absent attributes.
+// ---------------------------------------------------------------------------
 function normalizePresetPayload(payload) {
   if (!payload || typeof payload !== "object") return null;
-  // Accept either:
-  // 1) { type, version, name, settings: { ... } }
-  // 2) { exposure: 0, contrast: 10, ... }  (plain settings object)
-  const settings = payload.settings && typeof payload.settings === "object" ? payload.settings : payload;
-  if (!settings || typeof settings !== "object") return null;
 
-  const normalized = {};
-  for (const [key, value] of Object.entries(settings)) {
-    if (!controlEls.has(key)) continue;
+  const raw = payload.settings && typeof payload.settings === "object" ? payload.settings : payload;
+  if (!raw || typeof raw !== "object") return null;
+
+  // Start from a full-defaults base, then overlay whatever the JSON provides.
+  const normalized = { ...SETTINGS_DEFAULTS };
+  for (const [key, value] of Object.entries(raw)) {
+    if (!(key in SETTINGS_DEFAULTS)) continue; // ignore unknown keys
     const num = Number(value);
-    if (!Number.isFinite(num)) continue;
+    if (!Number.isFinite(num)) continue;        // ignore non-numeric values
     normalized[key] = num;
   }
 
@@ -719,6 +1265,11 @@ function normalizePresetPayload(payload) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// IMPORT PRESET FROM FILE
+// After normalisation every slider key is present with either the saved value
+// or its default, so applying the preset is a complete, clean slate operation.
+// ---------------------------------------------------------------------------
 async function importPresetFromFile(file) {
   if (!file) return;
   try {
@@ -726,8 +1277,16 @@ async function importPresetFromFile(file) {
     const payload = JSON.parse(text);
     const normalized = normalizePresetPayload(payload);
     if (!normalized) {
-      setStatus("Invalid preset JSON (missing settings).");
+      setStatus("Invalid preset JSON (missing or unrecognised settings).");
       return;
+    }
+
+    // Reset all sliders to defaults first, then apply every key from the preset.
+    // This ensures sliders not present in an older/partial preset file are
+    // explicitly cleared rather than left at whatever the user had set.
+    for (const [key, { setVal, def }] of controlEls.entries()) {
+      const value = key in normalized.settings ? normalized.settings[key] : def.def;
+      setVal(value);
     }
 
     // Add as a selectable preset entry (session only)
@@ -739,8 +1298,8 @@ async function importPresetFromFile(file) {
     presetSelect.appendChild(opt);
     presetSelect.value = id;
 
-    applyPresetById(id);
-    setStatus(`Preset imported: ${normalized.name}.`);
+    scheduleRender();
+    setStatus(`Preset imported: "${normalized.name}" — all attributes applied.`);
   } catch (e) {
     setStatus("Failed to import preset JSON.");
   }
@@ -749,6 +1308,18 @@ async function importPresetFromFile(file) {
 function luminance255(r, g, b) {
   return 0.2126 * r + 0.7152 * g + 0.0722 * b;
 }
+
+// Flat list of all HSL setting keys — used to quickly check if any HSL is active.
+const HSL_KEYS = [
+  "hslRedHue", "hslRedSat", "hslRedLum",
+  "hslOrangeHue", "hslOrangeSat", "hslOrangeLum",
+  "hslYellowHue", "hslYellowSat", "hslYellowLum",
+  "hslGreenHue", "hslGreenSat", "hslGreenLum",
+  "hslAquaHue", "hslAquaSat", "hslAquaLum",
+  "hslBlueHue", "hslBlueSat", "hslBlueLum",
+  "hslPurpleHue", "hslPurpleSat", "hslPurpleLum",
+  "hslMagentaHue", "hslMagentaSat", "hslMagentaLum",
+];
 
 function applyAdjustments(base, out, w, h, s) {
   const exposure = Math.pow(2, (s.exposure || 0) / 10);
@@ -773,31 +1344,7 @@ function applyAdjustments(base, out, w, h, s) {
 
   const lensVignette = Number(s.lensVignette || 0) / 100;
 
-  const hasHsl =
-    Number(s.hslRedHue || 0) ||
-    Number(s.hslRedSat || 0) ||
-    Number(s.hslRedLum || 0) ||
-    Number(s.hslOrangeHue || 0) ||
-    Number(s.hslOrangeSat || 0) ||
-    Number(s.hslOrangeLum || 0) ||
-    Number(s.hslYellowHue || 0) ||
-    Number(s.hslYellowSat || 0) ||
-    Number(s.hslYellowLum || 0) ||
-    Number(s.hslGreenHue || 0) ||
-    Number(s.hslGreenSat || 0) ||
-    Number(s.hslGreenLum || 0) ||
-    Number(s.hslAquaHue || 0) ||
-    Number(s.hslAquaSat || 0) ||
-    Number(s.hslAquaLum || 0) ||
-    Number(s.hslBlueHue || 0) ||
-    Number(s.hslBlueSat || 0) ||
-    Number(s.hslBlueLum || 0) ||
-    Number(s.hslPurpleHue || 0) ||
-    Number(s.hslPurpleSat || 0) ||
-    Number(s.hslPurpleLum || 0) ||
-    Number(s.hslMagentaHue || 0) ||
-    Number(s.hslMagentaSat || 0) ||
-    Number(s.hslMagentaLum || 0);
+  const hasHsl = HSL_KEYS.some((k) => Number(s[k] || 0) !== 0);
 
   const hasCurve =
     Number(s.curveShadows || 0) ||
@@ -1094,13 +1641,14 @@ function applyAdjustments(base, out, w, h, s) {
   // pass 4: grain
   if (grain > 0) {
     const gAmt = clamp01(grain / 100) * 22;
+    const grainSeed = (performance.now() * 1000) | 0;
     for (let i = 0; i < out.length; i += 4) {
       const r0 = out[i];
       const g0 = out[i + 1];
       const b0 = out[i + 2];
       const y0 = luminance255(r0, g0, b0) / 255;
 
-      let x = (i / 4) | 0;
+      let x = ((i / 4) | 0) ^ grainSeed;
       x ^= x << 13;
       x ^= x >>> 17;
       x ^= x << 5;
@@ -1566,6 +2114,7 @@ for (const p of PRESETS) {
 presetSelect.value = "none";
 applyPresetBtn.addEventListener("click", () => applyPresetById(presetSelect.value));
 exportPresetBtn.addEventListener("click", () => exportCurrentPreset());
+importPresetBtn.addEventListener("click", () => presetFileInput.click());
 presetFileInput.addEventListener("change", async () => {
   const file = presetFileInput.files?.[0];
   presetFileInput.value = "";
