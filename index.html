@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mini Lightroom (Basic Editor)</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%231fd1f9'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%230b0f17'/%3E%3Ccircle cx='32' cy='32' r='18' fill='url(%23g)'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span class="brand__text">Mini Lightroom</span>
+      </div>
+
+      <div class="topbar__actions">
+        <div class="filepick" title="Open an image (jpg/png/webp/heic/raw)">
+          <button class="btn" type="button">Open</button>
+          <input
+            id="fileInput"
+            class="filepick__input"
+            type="file"
+            accept="image/*,.heic,.heif,.dng,.cr2,.nef,.arw,.rw2,.orf,.raf,.pef,.srw"
+          />
+        </div>
+        <button id="resetBtn" class="btn btn--ghost" type="button" disabled>Reset</button>
+        <button id="compareBtn" class="btn btn--ghost" type="button" disabled title="Hold to compare (or press \\)">
+          Compare
+        </button>
+        <div class="sep" aria-hidden="true"></div>
+        <select id="exportFormat" class="select" disabled>
+          <option value="image/png">PNG</option>
+          <option value="image/jpeg">JPEG</option>
+        </select>
+        <select id="exportQuality" class="select" disabled title="Export resolution">
+          <option value="preview">Preview size</option>
+          <option value="full">Full (capped)</option>
+        </select>
+        <button id="downloadBtn" class="btn btn--primary" type="button" disabled>Download</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <aside class="panel" aria-label="Adjustments">
+        <div class="panel__section">
+          <div class="panel__title">Presets</div>
+          <div class="preset-row">
+            <select id="presetSelect" class="select" disabled></select>
+            <button id="applyPresetBtn" class="btn" type="button" disabled>Apply</button>
+            <div class="filepick filepick--ghost" title="Import a preset JSON">
+              <button id="importPresetBtn" class="btn btn--ghost" type="button" disabled>Import</button>
+              <input id="presetFileInput" class="filepick__input" type="file" accept=".json,application/json" disabled />
+            </div>
+            <button id="exportPresetBtn" class="btn btn--ghost" type="button" disabled>Export</button>
+          </div>
+          <div class="hint" style="margin-top: 8px">Presets are just saved slider values (like Lightroom basics).</div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Basic</div>
+          <div class="controls" id="basicControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">HSL / Color</div>
+          <div class="controls" id="colorControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Tone Curve (Parametric)</div>
+          <div class="controls" id="curveControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Color Grading</div>
+          <div class="controls" id="gradingControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Crop</div>
+          <div class="controls" id="cropControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Lens Corrections</div>
+          <div class="controls" id="lensControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Detail</div>
+          <div class="controls" id="detailControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Effects</div>
+          <div class="controls" id="effectsControls"></div>
+        </div>
+
+        <div class="panel__section">
+          <div class="panel__title">Transform</div>
+          <div class="controls" id="transformControls"></div>
+        </div>
+
+        <div class="panel__footer">
+          <div class="hint">
+            Tips: double‑click a slider to reset it. Hold <kbd>\</kbd> or “Compare” to preview original.
+          </div>
+          <div class="status" id="status">Open an image to start.</div>
+        </div>
+      </aside>
+
+      <section class="stage" aria-label="Preview">
+        <div class="stage__inner" id="stageInner">
+          <canvas id="viewCanvas"></canvas>
+          <div class="placeholder" id="placeholder">
+            <div class="placeholder__card">
+              <div class="placeholder__title">Drop an image here</div>
+              <div class="placeholder__sub">or click <span class="pill">Open</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bottombar">
+          <div class="bottombar__left">
+            <button id="fitBtn" class="btn btn--ghost" type="button" disabled>Fit</button>
+            <button id="actualBtn" class="btn btn--ghost" type="button" disabled>100%</button>
+          </div>
+          <div class="bottombar__right">
+            <label class="zoom">
+              <span class="zoom__label">Zoom</span>
+              <input id="zoom" type="range" min="25" max="400" value="100" step="1" disabled />
+              <span id="zoomValue" class="zoom__value">100%</span>
+            </label>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js" type="module"></script>
+  </body>
+</html>
