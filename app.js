@@ -294,16 +294,18 @@ const state = {
 };
 
 // =============================================================================
-// PRESETS — all researched across Lightroom, VSCO, Adobe, Mastin Labs, Gridfiti,
-// Presetpedia, Presetlove, Imagen AI, PHLEARN. Every preset uses the full
-// attribute set: Basic · Effects · Detail · Tone Curve · Color Grading · HSL · Lens.
+// PRESETS — researched across Lightroom, VSCO, Adobe, Mastin Labs, Gridfiti,
+// Presetpedia, Presetlove, Imagen AI, PHLEARN, Lou & Marks, Luxe Lens.
+// Every preset uses the full attribute set:
+//   Basic · Effects · Detail · Tone Curve · Color Grading · HSL · Lens
+// "── Instagram ──" divider marks the 5 platform-specific presets added in
+// batch 3, researched from the top Instagram influencer preset collections.
 // =============================================================================
 const PRESETS = [
   { id: "none", name: "None (no changes)", settings: {} },
 
   // ---------------------------------------------------------------------------
   // Kodak Portra 400 — warm skin, low contrast, fine grain, olive greens
-  // Sources: Mastin Labs, VSCO KP2/KP4, Gridfiti Portra 400, Imagen AI
   // ---------------------------------------------------------------------------
   {
     id: "portra-400",
@@ -315,8 +317,7 @@ const PRESETS = [
       texture: -4, clarity: -6, dehaze: 0, vignette: -8, grain: 22,
       sharpness: 22, sharpenMasking: 55, noiseReduction: 10, colorNoiseReduction: 14,
       curveShadows: 12, curveDarks: 4, curveLights: -4, curveHighlights: -10,
-      gradeShadowsHue: 26, gradeShadowsSat: 6,
-      gradeMidHue: 32, gradeMidSat: 14,
+      gradeShadowsHue: 26, gradeShadowsSat: 6, gradeMidHue: 32, gradeMidSat: 14,
       gradeHighHue: 40, gradeHighSat: 10, gradeBalance: 12,
       hslRedHue: 6, hslRedSat: 10, hslRedLum: 8,
       hslOrangeHue: 8, hslOrangeSat: 14, hslOrangeLum: 10,
@@ -332,7 +333,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // Fuji Pro 400H — cool/green bias, airy pastels, clean skin, lifted shadows
-  // Sources: VSCO FP8, Mastin Labs Fuji pack, LooksLikeFilm community
   // ---------------------------------------------------------------------------
   {
     id: "fuji-400h",
@@ -344,8 +344,7 @@ const PRESETS = [
       texture: -8, clarity: -10, dehaze: -6, vignette: -6, grain: 16,
       sharpness: 16, sharpenMasking: 60, noiseReduction: 14, colorNoiseReduction: 18,
       curveShadows: 20, curveDarks: 10, curveLights: -6, curveHighlights: -18,
-      gradeShadowsHue: 158, gradeShadowsSat: 12,
-      gradeMidHue: 160, gradeMidSat: 6,
+      gradeShadowsHue: 158, gradeShadowsSat: 12, gradeMidHue: 160, gradeMidSat: 6,
       gradeHighHue: 42, gradeHighSat: 8, gradeBalance: -8,
       hslRedHue: 0, hslRedSat: -6, hslRedLum: 6,
       hslOrangeHue: 2, hslOrangeSat: -8, hslOrangeLum: 8,
@@ -361,7 +360,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // Dark & Moody — cool temp, shadow crush, blue-teal grade, stripped warmth
-  // Sources: Presetpedia moody guide, Wilde Presets, Flothemes "Rover", VSCO dark
   // ---------------------------------------------------------------------------
   {
     id: "dark-moody",
@@ -373,8 +371,7 @@ const PRESETS = [
       texture: 18, clarity: 28, dehaze: 14, vignette: -32, grain: 18,
       sharpness: 24, sharpenMasking: 38, noiseReduction: 12, colorNoiseReduction: 16,
       curveShadows: -20, curveDarks: -10, curveLights: 6, curveHighlights: -22,
-      gradeShadowsHue: 200, gradeShadowsSat: 26,
-      gradeMidHue: 204, gradeMidSat: 10,
+      gradeShadowsHue: 200, gradeShadowsSat: 26, gradeMidHue: 204, gradeMidSat: 10,
       gradeHighHue: 34, gradeHighSat: 16, gradeBalance: -18,
       hslRedHue: -4, hslRedSat: -10, hslRedLum: -6,
       hslOrangeHue: 0, hslOrangeSat: -20, hslOrangeLum: -8,
@@ -389,8 +386,7 @@ const PRESETS = [
   },
 
   // ---------------------------------------------------------------------------
-  // Golden Hour — #1 lifestyle preset; burning sky, boosted oranges, warm glow
-  // Sources: Artifact Uprising 07, Pretty Presets, Wilde, Lou & Marks "Boho"
+  // Golden Hour — burning sky, boosted oranges, warm glow
   // ---------------------------------------------------------------------------
   {
     id: "golden-hour",
@@ -402,8 +398,7 @@ const PRESETS = [
       texture: 6, clarity: 2, dehaze: -4, vignette: -14, grain: 8,
       sharpness: 18, sharpenMasking: 36, noiseReduction: 8, colorNoiseReduction: 10,
       curveShadows: 16, curveDarks: 8, curveLights: 6, curveHighlights: -6,
-      gradeShadowsHue: 34, gradeShadowsSat: 16,
-      gradeMidHue: 38, gradeMidSat: 22,
+      gradeShadowsHue: 34, gradeShadowsSat: 16, gradeMidHue: 38, gradeMidSat: 22,
       gradeHighHue: 44, gradeHighSat: 26, gradeBalance: 20,
       hslRedHue: 8, hslRedSat: 18, hslRedLum: 10,
       hslOrangeHue: 10, hslOrangeSat: 30, hslOrangeLum: 14,
@@ -419,7 +414,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // VSCO Fade — lifted blacks, green-teal shadows, muted all-channel HSL
-  // Sources: VSCO A4/A5/F1-F3, Presetpedia VSCO analysis, CreativeBloq 2024
   // ---------------------------------------------------------------------------
   {
     id: "vsco-fade",
@@ -431,8 +425,7 @@ const PRESETS = [
       texture: -10, clarity: -16, dehaze: -8, vignette: -10, grain: 14,
       sharpness: 8, sharpenMasking: 55, noiseReduction: 12, colorNoiseReduction: 14,
       curveShadows: 26, curveDarks: 12, curveLights: -10, curveHighlights: -22,
-      gradeShadowsHue: 152, gradeShadowsSat: 14,
-      gradeMidHue: 160, gradeMidSat: 8,
+      gradeShadowsHue: 152, gradeShadowsSat: 14, gradeMidHue: 160, gradeMidSat: 8,
       gradeHighHue: 38, gradeHighSat: 6, gradeBalance: -6,
       hslRedHue: 2, hslRedSat: -10, hslRedLum: 4,
       hslOrangeHue: 2, hslOrangeSat: -12, hslOrangeLum: 6,
@@ -448,7 +441,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // Film Noir — full desaturation, extreme contrast, silver grade, deep vignette
-  // Sources: PHLEARN Film Noir Pack, Presetpedia dark guide, Presets.io, Adobe
   // ---------------------------------------------------------------------------
   {
     id: "film-noir",
@@ -460,8 +452,7 @@ const PRESETS = [
       texture: 16, clarity: 32, dehaze: 10, vignette: -40, grain: 24,
       sharpness: 36, sharpenMasking: 42, noiseReduction: 6, colorNoiseReduction: 8,
       curveShadows: -24, curveDarks: -12, curveLights: 14, curveHighlights: -10,
-      gradeShadowsHue: 218, gradeShadowsSat: 12,
-      gradeMidHue: 215, gradeMidSat: 5,
+      gradeShadowsHue: 218, gradeShadowsSat: 12, gradeMidHue: 215, gradeMidSat: 5,
       gradeHighHue: 44, gradeHighSat: 6, gradeBalance: -10,
       hslRedHue: 0, hslRedSat: 0, hslRedLum: 22,
       hslOrangeHue: 0, hslOrangeSat: 0, hslOrangeLum: 18,
@@ -477,7 +468,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // Vintage 70s — yellow-orange analog warmth, green-to-yellow shift, heavy grain
-  // Sources: Gridfiti "70s Vibe" (2024), Presetlove 1970s, Flourish Presets guide
   // ---------------------------------------------------------------------------
   {
     id: "vintage-70s",
@@ -489,8 +479,7 @@ const PRESETS = [
       texture: -4, clarity: -8, dehaze: -4, vignette: -14, grain: 32,
       sharpness: 14, sharpenMasking: 48, noiseReduction: 8, colorNoiseReduction: 10,
       curveShadows: 18, curveDarks: 8, curveLights: -4, curveHighlights: -12,
-      gradeShadowsHue: 44, gradeShadowsSat: 18,
-      gradeMidHue: 38, gradeMidSat: 22,
+      gradeShadowsHue: 44, gradeShadowsSat: 18, gradeMidHue: 38, gradeMidSat: 22,
       gradeHighHue: 34, gradeHighSat: 16, gradeBalance: 8,
       hslRedHue: 8, hslRedSat: 10, hslRedLum: 6,
       hslOrangeHue: 10, hslOrangeSat: 16, hslOrangeLum: 8,
@@ -506,7 +495,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // Desert Dunes — vivid orange sands, punchy contrast, deep blue sky
-  // Sources: Presetlove Desert Landscapes, Presetsfactory desert, Gridfiti OT
   // ---------------------------------------------------------------------------
   {
     id: "desert-dunes",
@@ -518,8 +506,7 @@ const PRESETS = [
       texture: 28, clarity: 22, dehaze: 24, vignette: -16, grain: 6,
       sharpness: 28, sharpenMasking: 18, noiseReduction: 6, colorNoiseReduction: 8,
       curveShadows: -10, curveDarks: -4, curveLights: 8, curveHighlights: -8,
-      gradeShadowsHue: 28, gradeShadowsSat: 20,
-      gradeMidHue: 34, gradeMidSat: 14,
+      gradeShadowsHue: 28, gradeShadowsSat: 20, gradeMidHue: 34, gradeMidSat: 14,
       gradeHighHue: 42, gradeHighSat: 10, gradeBalance: -4,
       hslRedHue: 6, hslRedSat: 28, hslRedLum: 4,
       hslOrangeHue: 8, hslOrangeSat: 36, hslOrangeLum: 8,
@@ -535,7 +522,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // Pastel Dream — pink-lavender shadows, boosted purples/magentas, dreamy glow
-  // Sources: Gridfiti Retro Radiance/Vintage Velvet, Presetlove 79th & 1985
   // ---------------------------------------------------------------------------
   {
     id: "pastel-dream",
@@ -547,8 +533,7 @@ const PRESETS = [
       texture: -12, clarity: -14, dehaze: -6, vignette: -8, grain: 10,
       sharpness: 12, sharpenMasking: 58, noiseReduction: 14, colorNoiseReduction: 16,
       curveShadows: 18, curveDarks: 8, curveLights: -6, curveHighlights: -14,
-      gradeShadowsHue: 296, gradeShadowsSat: 18,
-      gradeMidHue: 302, gradeMidSat: 12,
+      gradeShadowsHue: 296, gradeShadowsSat: 18, gradeMidHue: 302, gradeMidSat: 12,
       gradeHighHue: 320, gradeHighSat: 8, gradeBalance: 6,
       hslRedHue: 4, hslRedSat: -4, hslRedLum: 8,
       hslOrangeHue: 4, hslOrangeSat: -8, hslOrangeLum: 10,
@@ -564,7 +549,6 @@ const PRESETS = [
 
   // ---------------------------------------------------------------------------
   // Kodak Gold 200 — yellow-gold bias, punchier than Portra, consumer warmth
-  // Sources: Imagen AI Kodak Gold 200, Gridfiti Gold pack (2024), Presetlove film
   // ---------------------------------------------------------------------------
   {
     id: "kodak-gold-200",
@@ -576,8 +560,7 @@ const PRESETS = [
       texture: -2, clarity: -2, dehaze: 0, vignette: -10, grain: 26,
       sharpness: 20, sharpenMasking: 45, noiseReduction: 10, colorNoiseReduction: 12,
       curveShadows: 10, curveDarks: 4, curveLights: -2, curveHighlights: -8,
-      gradeShadowsHue: 50, gradeShadowsSat: 16,
-      gradeMidHue: 44, gradeMidSat: 20,
+      gradeShadowsHue: 50, gradeShadowsSat: 16, gradeMidHue: 44, gradeMidSat: 20,
       gradeHighHue: 38, gradeHighSat: 14, gradeBalance: 10,
       hslRedHue: 6, hslRedSat: 12, hslRedLum: 6,
       hslOrangeHue: 8, hslOrangeSat: 18, hslOrangeLum: 10,
@@ -604,8 +587,7 @@ const PRESETS = [
       texture: 24, clarity: 16, dehaze: 18, vignette: -12, grain: 0,
       sharpness: 30, sharpenMasking: 20, noiseReduction: 8, colorNoiseReduction: 12,
       curveShadows: 8, curveDarks: 4, curveLights: -6, curveHighlights: -14,
-      gradeShadowsHue: 210, gradeShadowsSat: 18,
-      gradeMidHue: 40, gradeMidSat: 6,
+      gradeShadowsHue: 210, gradeShadowsSat: 18, gradeMidHue: 40, gradeMidSat: 6,
       gradeHighHue: 46, gradeHighSat: 14, gradeBalance: -10,
       hslRedHue: 0, hslRedSat: 6, hslRedLum: 0,
       hslOrangeHue: 4, hslOrangeSat: 10, hslOrangeLum: 2,
@@ -632,8 +614,7 @@ const PRESETS = [
       texture: 18, clarity: 18, dehaze: 16, vignette: -20, grain: 28,
       sharpness: 16, sharpenMasking: 20, noiseReduction: 14, colorNoiseReduction: 18,
       curveShadows: 14, curveDarks: 6, curveLights: -8, curveHighlights: -16,
-      gradeShadowsHue: 214, gradeShadowsSat: 22,
-      gradeMidHue: 210, gradeMidSat: 12,
+      gradeShadowsHue: 214, gradeShadowsSat: 22, gradeMidHue: 210, gradeMidSat: 12,
       gradeHighHue: 205, gradeHighSat: 8, gradeBalance: -5,
       hslRedHue: 0, hslRedSat: -14, hslRedLum: -6,
       hslOrangeHue: 0, hslOrangeSat: -22, hslOrangeLum: -8,
@@ -660,8 +641,7 @@ const PRESETS = [
       texture: 22, clarity: 20, dehaze: 30, vignette: -16, grain: 14,
       sharpness: 26, sharpenMasking: 14, noiseReduction: 8, colorNoiseReduction: 12,
       curveShadows: -20, curveDarks: -8, curveLights: 12, curveHighlights: 10,
-      gradeShadowsHue: 272, gradeShadowsSat: 36,
-      gradeMidHue: 186, gradeMidSat: 20,
+      gradeShadowsHue: 272, gradeShadowsSat: 36, gradeMidHue: 186, gradeMidSat: 20,
       gradeHighHue: 312, gradeHighSat: 30, gradeBalance: 0,
       hslRedHue: -10, hslRedSat: 30, hslRedLum: 6,
       hslOrangeHue: -14, hslOrangeSat: 16, hslOrangeLum: -4,
@@ -688,8 +668,7 @@ const PRESETS = [
       texture: -8, clarity: 6, dehaze: 4, vignette: -16, grain: 4,
       sharpness: 20, sharpenMasking: 65, noiseReduction: 12, colorNoiseReduction: 16,
       curveShadows: 14, curveDarks: 8, curveLights: 4, curveHighlights: -10,
-      gradeShadowsHue: 24, gradeShadowsSat: 10,
-      gradeMidHue: 32, gradeMidSat: 16,
+      gradeShadowsHue: 24, gradeShadowsSat: 10, gradeMidHue: 32, gradeMidSat: 16,
       gradeHighHue: 38, gradeHighSat: 14, gradeBalance: 15,
       hslRedHue: 4, hslRedSat: 14, hslRedLum: 8,
       hslOrangeHue: 6, hslOrangeSat: 18, hslOrangeLum: 10,
@@ -716,8 +695,7 @@ const PRESETS = [
       texture: 12, clarity: 12, dehaze: 16, vignette: -24, grain: 16,
       sharpness: 24, sharpenMasking: 35, noiseReduction: 10, colorNoiseReduction: 14,
       curveShadows: -18, curveDarks: -8, curveLights: 8, curveHighlights: -14,
-      gradeShadowsHue: 186, gradeShadowsSat: 32,
-      gradeMidHue: 190, gradeMidSat: 14,
+      gradeShadowsHue: 186, gradeShadowsSat: 32, gradeMidHue: 190, gradeMidSat: 14,
       gradeHighHue: 34, gradeHighSat: 24, gradeBalance: -15,
       hslRedHue: 0, hslRedSat: -6, hslRedLum: -2,
       hslOrangeHue: 6, hslOrangeSat: 14, hslOrangeLum: 2,
@@ -744,8 +722,7 @@ const PRESETS = [
       texture: 22, clarity: 20, dehaze: 8, vignette: -18, grain: 20,
       sharpness: 32, sharpenMasking: 45, noiseReduction: 8, colorNoiseReduction: 10,
       curveShadows: -14, curveDarks: -8, curveLights: 10, curveHighlights: 8,
-      gradeShadowsHue: 214, gradeShadowsSat: 10,
-      gradeMidHue: 210, gradeMidSat: 6,
+      gradeShadowsHue: 214, gradeShadowsSat: 10, gradeMidHue: 210, gradeMidSat: 6,
       gradeHighHue: 48, gradeHighSat: 4, gradeBalance: -8,
       hslRedHue: 0, hslRedSat: 0, hslRedLum: 20,
       hslOrangeHue: 0, hslOrangeSat: 0, hslOrangeLum: 16,
@@ -756,6 +733,439 @@ const PRESETS = [
       hslPurpleHue: 0, hslPurpleSat: 0, hslPurpleLum: -8,
       hslMagentaHue: 0, hslMagentaSat: 0, hslMagentaLum: 6,
       lensDistortion: 0, lensChromaticAberration: 0, lensVignette: -8,
+    },
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // ── Instagram ──
+  // Top 5 Instagram-specific presets researched from Lou & Marks, Luxe Lens,
+  // Gridfiti, Presetpedia, Presetlove, Imagen AI, CSSAuthor (2024–2026).
+  // ═══════════════════════════════════════════════════════════════════════════
+  { id: "_sep_instagram", name: "── Instagram ──", settings: {} },
+
+  // ---------------------------------------------------------------------------
+  // IG: Light & Airy — #1 influencer feed style; bright, soft, clean pastels
+  // Research: The universally dominant preset style on Instagram for portraits,
+  // lifestyle, and family feeds. Key traits per Luxe Lens, Jordan Brittley,
+  // Presetpedia, Imagen AI: overexposed feel, lifted shadows (+35), pulled
+  // highlights (-50 to -60), very low contrast, near-zero clarity, lifted black
+  // point. Greens shifted mint/blue (away from yellow). Slightly cool or neutral
+  // temp. Pastel pink/peach highlights grade. High sharpen masking for skin.
+  // Sources: Luxe Lens Light & Airy (10-pack), Jordan Brittley BPS, Presetpedia
+  //          light & airy guide, Imagen AI L&A analysis, Tailwind tutorial.
+  // ---------------------------------------------------------------------------
+  {
+    id: "ig-light-airy",
+    name: "IG: Light & Airy",
+    settings: {
+      // Basic — overexposed and airy, not blown out
+      exposure: 8,
+      contrast: -12,
+      highlights: -50,
+      shadows: 35,
+      whites: 10,
+      blacks: -8,
+      temperature: -4,
+      tint: 8,
+      vibrance: 6,
+      saturation: -12,
+      // Effects — low clarity is essential (softness), no dehaze (stays hazy/dreamy)
+      texture: -10,
+      clarity: -12,
+      dehaze: -6,
+      vignette: -6,
+      grain: 6,
+      // Detail — high masking for smooth skin, gentle sharpness
+      sharpness: 18,
+      sharpenMasking: 60,
+      noiseReduction: 12,
+      colorNoiseReduction: 14,
+      // Tone curve — airy S: lifted shadow floor, softened highlight ceiling
+      curveShadows: 16,
+      curveDarks: 8,
+      curveLights: -4,
+      curveHighlights: -12,
+      // Color grading — cool aqua shadows (Luxe L&A signature), pink/peach mids,
+      // barely-there warm highlights (soft blush)
+      gradeShadowsHue: 192,
+      gradeShadowsSat: 8,
+      gradeMidHue: 320,
+      gradeMidSat: 8,
+      gradeHighHue: 36,
+      gradeHighSat: 8,
+      gradeBalance: 10,
+      // HSL — light & airy recipe: greens shifted blue-mint (most important move),
+      // blues slightly brightened for sky glow, oranges luminous for skin,
+      // reds/magentas kept clean and light
+      hslRedHue: -6,
+      hslRedSat: -6,
+      hslRedLum: 8,
+      hslOrangeHue: -4,
+      hslOrangeSat: -4,
+      hslOrangeLum: 12,
+      hslYellowHue: 10,
+      hslYellowSat: -14,
+      hslYellowLum: 6,
+      hslGreenHue: 18,
+      hslGreenSat: -22,
+      hslGreenLum: 8,
+      hslAquaHue: -6,
+      hslAquaSat: -12,
+      hslAquaLum: 10,
+      hslBlueHue: -4,
+      hslBlueSat: -8,
+      hslBlueLum: 10,
+      hslPurpleHue: 0,
+      hslPurpleSat: -14,
+      hslPurpleLum: 4,
+      hslMagentaHue: -6,
+      hslMagentaSat: -10,
+      hslMagentaLum: 6,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 4,
+      lensVignette: -4,
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // IG: Golden Boho — #1 lifestyle/blogger earthy warmth; Lou & Marks bestseller
+  // Research: The boho/golden aesthetic dominates influencer lifestyle content.
+  // Per Lou & Marks "Golden Boho Moody Vintage", Gridfiti Boho pack, Presetlove
+  // boho, Presetpedia boho guide: warm temp, boosted oranges and warm browns,
+  // earthy reduced greens (greens shifted olive/yellow-ward), matte-like slight
+  // contrast reduction, soft vignette, light grain for film texture, gentle
+  // amber-gold color grade throughout. Bright but not overexposed.
+  // Sources: Lou & Marks Golden Boho Moody Vintage, Gridfiti Boho pack (2024),
+  //          Presetlove boho presets, Presetpedia boho guide, KIIN boho.
+  // ---------------------------------------------------------------------------
+  {
+    id: "ig-golden-boho",
+    name: "IG: Golden Boho",
+    settings: {
+      // Basic — warm, bright, inviting but not airy
+      exposure: 4,
+      contrast: -4,
+      highlights: -18,
+      shadows: 20,
+      whites: 6,
+      blacks: 8,
+      temperature: 24,
+      tint: 8,
+      vibrance: 14,
+      saturation: -4,
+      // Effects — gentle clarity for rustic texture, slight vignette for warmth
+      texture: 4,
+      clarity: 4,
+      dehaze: -2,
+      vignette: -12,
+      grain: 14,
+      // Detail
+      sharpness: 18,
+      sharpenMasking: 44,
+      noiseReduction: 8,
+      colorNoiseReduction: 10,
+      // Tone curve — warm matte: lifted blacks, gentle highlight roll-off
+      curveShadows: 14,
+      curveDarks: 6,
+      curveLights: -2,
+      curveHighlights: -10,
+      // Color grading — amber throughout all zones (earthy golden feel),
+      // balance pushed slightly to shadows (warms the dark areas most)
+      gradeShadowsHue: 36,
+      gradeShadowsSat: 18,
+      gradeMidHue: 38,
+      gradeMidSat: 16,
+      gradeHighHue: 42,
+      gradeHighSat: 12,
+      gradeBalance: -8,
+      // HSL — boho recipe: oranges warm and luminous (golden earth tones),
+      // greens shifted yellow-olive (nature is earthy, not vivid),
+      // reds warm for skin, yellows boosted, blues muted (not the focus)
+      hslRedHue: 6,
+      hslRedSat: 14,
+      hslRedLum: 6,
+      hslOrangeHue: 8,
+      hslOrangeSat: 20,
+      hslOrangeLum: 10,
+      hslYellowHue: -4,
+      hslYellowSat: 16,
+      hslYellowLum: 8,
+      hslGreenHue: -16,
+      hslGreenSat: -10,
+      hslGreenLum: -4,
+      hslAquaHue: -6,
+      hslAquaSat: -14,
+      hslAquaLum: -2,
+      hslBlueHue: -2,
+      hslBlueSat: -18,
+      hslBlueLum: -6,
+      hslPurpleHue: 0,
+      hslPurpleSat: -10,
+      hslPurpleLum: -2,
+      hslMagentaHue: 4,
+      hslMagentaSat: -6,
+      hslMagentaLum: 2,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 4,
+      lensVignette: -6,
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // IG: Clean Minimal — "no filter" polished natural; #1 trend of 2025–2026
+  // Research: The dominant 2025–2026 Instagram trend is the clean, authentic
+  // "no filter" look. Per Lou & Marks True Color, CSSAuthor Instagram baseline,
+  // 123Presets Natural, Presetpedia clean/minimal, Speckyboy minimalist guide:
+  // slight exposure boost, neutral-warm tone, very gentle contrast, minimal
+  // saturation boost (vibrance only), no grain, no distortion, high sharpening.
+  // Key move: desaturate greens/yellows very slightly (avoids over-processed look)
+  // while boosting orange lum (natural skin). Barely-there color grade.
+  // Sources: Lou & Marks True Color/Natural Light 2026, CSSAuthor Instagram
+  //          baseline, 123Presets Natural 2025, Presetpedia minimal clean guide.
+  // ---------------------------------------------------------------------------
+  {
+    id: "ig-clean-minimal",
+    name: "IG: Clean Minimal",
+    settings: {
+      // Basic — natural polish, bright without being airy
+      exposure: 4,
+      contrast: 6,
+      highlights: -16,
+      shadows: 14,
+      whites: 6,
+      blacks: -6,
+      temperature: 6,
+      tint: 4,
+      vibrance: 14,
+      saturation: -4,
+      // Effects — slight texture for sharpness feel, no clarity extremes
+      texture: 6,
+      clarity: 4,
+      dehaze: 2,
+      vignette: -6,
+      grain: 0,
+      // Detail — crisp clean sharpening
+      sharpness: 24,
+      sharpenMasking: 36,
+      noiseReduction: 6,
+      colorNoiseReduction: 8,
+      // Tone curve — barely-there S, very natural
+      curveShadows: 6,
+      curveDarks: 4,
+      curveLights: -2,
+      curveHighlights: -6,
+      // Color grading — minimal: barely warm mids, neutral everything else
+      gradeShadowsHue: 220,
+      gradeShadowsSat: 4,
+      gradeMidHue: 36,
+      gradeMidSat: 6,
+      gradeHighHue: 40,
+      gradeHighSat: 6,
+      gradeBalance: 4,
+      // HSL — the "no filter" recipe: oranges brightened (natural skin glow),
+      // blues and aquas very slightly boosted (clean sky), greens barely touched,
+      // everything else neutral (the whole point is it looks unedited)
+      hslRedHue: 0,
+      hslRedSat: -4,
+      hslRedLum: 4,
+      hslOrangeHue: 2,
+      hslOrangeSat: 6,
+      hslOrangeLum: 8,
+      hslYellowHue: 0,
+      hslYellowSat: -6,
+      hslYellowLum: 2,
+      hslGreenHue: 2,
+      hslGreenSat: -8,
+      hslGreenLum: 2,
+      hslAquaHue: 0,
+      hslAquaSat: 4,
+      hslAquaLum: 4,
+      hslBlueHue: 0,
+      hslBlueSat: 6,
+      hslBlueLum: 2,
+      hslPurpleHue: 0,
+      hslPurpleSat: -4,
+      hslPurpleLum: 0,
+      hslMagentaHue: 0,
+      hslMagentaSat: -4,
+      hslMagentaLum: 0,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 2,
+      lensVignette: -2,
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // IG: Warm Blogger — peachy-warm skin for influencer lifestyle/coffee content
+  // Research: The warm blogger/influencer aesthetic is dominant in lifestyle,
+  // food, beauty, and fashion niches. Per Presetpedia warm/cream, Presetlove
+  // nude/cream, Luxe Instagram warm, Gridfiti influencer pack: warm temperature,
+  // boosted orange saturation and luminance (glowing skin), peachy-blush color
+  // grade, very high skin masking (sharpenMasking), slight negative texture for
+  // smooth skin appearance, creamy/lifted blacks, pulled highlights.
+  // Sources: Presetpedia warm Instagram guide, Presetlove cream/nude aesthetic,
+  //          Luxe Lens Instagram warm collection, Gridfiti influencer packs 2024.
+  // ---------------------------------------------------------------------------
+  {
+    id: "ig-warm-blogger",
+    name: "IG: Warm Blogger",
+    settings: {
+      // Basic — warm, flattering, glowing
+      exposure: 5,
+      contrast: -4,
+      highlights: -22,
+      shadows: 22,
+      whites: 6,
+      blacks: 6,
+      temperature: 18,
+      tint: 10,
+      vibrance: 16,
+      saturation: -2,
+      // Effects — slight skin softening via negative texture, gentle clarity
+      texture: -6,
+      clarity: 2,
+      dehaze: 0,
+      vignette: -10,
+      grain: 8,
+      // Detail — very high masking (protects skin from sharpening)
+      sharpness: 16,
+      sharpenMasking: 70,
+      noiseReduction: 12,
+      colorNoiseReduction: 14,
+      // Tone curve — warm lifted feel: open shadows, soft highlight ceiling
+      curveShadows: 14,
+      curveDarks: 8,
+      curveLights: 2,
+      curveHighlights: -8,
+      // Color grading — peachy-blush in shadows and mids (influencer signature),
+      // barely warm highlights — balance pushed to highlights for skin glow
+      gradeShadowsHue: 18,
+      gradeShadowsSat: 12,
+      gradeMidHue: 24,
+      gradeMidSat: 14,
+      gradeHighHue: 36,
+      gradeHighSat: 10,
+      gradeBalance: 18,
+      // HSL — warm blogger recipe: reds and oranges are the stars (skin tones),
+      // yellows warm and slightly bright, greens muted (background fades),
+      // blues desaturated (sky doesn't compete with skin), purples/magentas neutral
+      hslRedHue: 6,
+      hslRedSat: 16,
+      hslRedLum: 10,
+      hslOrangeHue: 8,
+      hslOrangeSat: 22,
+      hslOrangeLum: 14,
+      hslYellowHue: 4,
+      hslYellowSat: 10,
+      hslYellowLum: 6,
+      hslGreenHue: -4,
+      hslGreenSat: -14,
+      hslGreenLum: -4,
+      hslAquaHue: 0,
+      hslAquaSat: -10,
+      hslAquaLum: 0,
+      hslBlueHue: 0,
+      hslBlueSat: -12,
+      hslBlueLum: -2,
+      hslPurpleHue: 0,
+      hslPurpleSat: -8,
+      hslPurpleLum: 0,
+      hslMagentaHue: 6,
+      hslMagentaSat: 6,
+      hslMagentaLum: 4,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 4,
+      lensVignette: -6,
+    },
+  },
+
+  // ---------------------------------------------------------------------------
+  // IG: Cottagecore — dreamy lush greens, earthy organic, #1 travel/nature trend
+  // Research: Cottagecore is Lou & Marks' top-selling travel influencer preset
+  // category (2025–2026). Per Lou & Marks Cottagecore, Gridfiti boho-nature,
+  // Presetlove outdoors: lush vivid greens (saturation and luminance boosted),
+  // slightly cool temp for freshness, aquas brightened, dreamy negative clarity,
+  // soft grain, muted warm shadows (earthy), gentle highlight recovery.
+  // Key difference from Boho: greens are the hero (vivid, not olive), blues
+  // are cooler and cleaner, overall feel is fresh/garden vs warm/desert.
+  // Sources: Lou & Marks Cottagecore (2025 bestseller), Gridfiti boho-nature
+  //          pack, Presetlove outdoors/nature aesthetic, Speckyboy travel guide.
+  // ---------------------------------------------------------------------------
+  {
+    id: "ig-cottagecore",
+    name: "IG: Cottagecore",
+    settings: {
+      // Basic — fresh and bright, slightly cool for dewy feel
+      exposure: 5,
+      contrast: -6,
+      highlights: -20,
+      shadows: 22,
+      whites: 8,
+      blacks: 4,
+      temperature: -6,
+      tint: 4,
+      vibrance: 22,
+      saturation: 4,
+      // Effects — negative clarity for dreamy garden feel, gentle texture
+      texture: -6,
+      clarity: -8,
+      dehaze: -4,
+      vignette: -10,
+      grain: 10,
+      // Detail — soft sharpening for organic/natural look
+      sharpness: 16,
+      sharpenMasking: 42,
+      noiseReduction: 10,
+      colorNoiseReduction: 12,
+      // Tone curve — airy but with more tonal depth than plain light & airy
+      curveShadows: 12,
+      curveDarks: 6,
+      curveLights: -4,
+      curveHighlights: -10,
+      // Color grading — soft green-teal shadows (garden shade),
+      // cool neutral mids, barely warm highlights (soft daylight)
+      gradeShadowsHue: 148,
+      gradeShadowsSat: 12,
+      gradeMidHue: 154,
+      gradeMidSat: 6,
+      gradeHighHue: 42,
+      gradeHighSat: 8,
+      gradeBalance: -4,
+      // HSL — cottagecore recipe: greens are vivid and luminous (the hero),
+      // aquas brightened (water/dew), yellows warm (sunlight in foliage),
+      // reds/oranges soft for skin/flowers, blues clean (sky backdrop)
+      hslRedHue: -4,
+      hslRedSat: -4,
+      hslRedLum: 6,
+      hslOrangeHue: 4,
+      hslOrangeSat: 4,
+      hslOrangeLum: 8,
+      hslYellowHue: -2,
+      hslYellowSat: 14,
+      hslYellowLum: 6,
+      hslGreenHue: 6,
+      hslGreenSat: 26,
+      hslGreenLum: 8,
+      hslAquaHue: -4,
+      hslAquaSat: 18,
+      hslAquaLum: 10,
+      hslBlueHue: -2,
+      hslBlueSat: 6,
+      hslBlueLum: 6,
+      hslPurpleHue: -4,
+      hslPurpleSat: -6,
+      hslPurpleLum: 2,
+      hslMagentaHue: -4,
+      hslMagentaSat: -4,
+      hslMagentaLum: 4,
+      // Lens
+      lensDistortion: 0,
+      lensChromaticAberration: 4,
+      lensVignette: -6,
     },
   },
 ];
@@ -902,6 +1312,11 @@ function resetAll() {
 }
 
 function applyPresetById(id) {
+  // Separator entries have no meaningful settings — treat like "none"
+  if (id.startsWith("_sep_")) {
+    presetSelect.value = "none";
+    return;
+  }
   const preset = PRESETS.find((p) => p.id === id) || PRESETS[0];
   for (const [key, value] of Object.entries(preset.settings || {})) {
     const el = controlEls.get(key);
@@ -1363,9 +1778,16 @@ zoomEl.addEventListener("input",()=>setZoom(Number(zoomEl.value)/100));
 fitBtn.addEventListener("click",()=>fitToStage());
 actualBtn.addEventListener("click",()=>setZoom(1));
 
+// Build preset dropdown — separators are rendered as disabled options
 for (const p of PRESETS) {
-  const opt=document.createElement("option");
-  opt.value=p.id; opt.textContent=p.name;
+  const opt = document.createElement("option");
+  opt.value = p.id;
+  opt.textContent = p.name;
+  if (p.id.startsWith("_sep_")) {
+    opt.disabled = true;
+    opt.style.fontWeight = "700";
+    opt.style.color = "inherit";
+  }
   presetSelect.appendChild(opt);
 }
 presetSelect.value="none";
